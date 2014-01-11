@@ -1,0 +1,40 @@
+<h1>13th Age Character Builder</h1>
+<label>Name <input type="text" ng-model="name"></label>
+<label>Race <input type="text"></label>
+<label>Class <input type="text"></label>
+<label>Level <input type="text" ng-model="level"></label>
+
+<h2>Attributes</h2>
+<div ng-repeat="attr in attributeOrder">
+  <label>{{attr}} <input type="text" ng-model="attributes[attr].value"></label>
+  <label>{{attr}} mod <input type="text" ng-model="attributes[attr].mod"></label>
+  <label>{{attr}} mod + level <input type="text" ng-model="attributes[attr].modLvl"></label>
+</div>
+
+<h2>Defenses</h2>
+<label>Armor Class (AC) <input type="text"></label>
+<label>Physical Defense (PD) <input type="text"></label>
+<label>Mental Defense (MD) <input type="text"></label>
+<label>Save Bonuses <input type="text"></label>
+
+<h2>Hit Points</h2>
+<label>Current <input type="text"></label>
+<label>Maximum <input type="text"></label>
+
+<h2>Recoveries</h2>
+<label>Current <input type="text"></label>
+<label>Maximum <input type="text"></label>
+
+<h2>Basic Melee Attack</h2>
+<label>Attack <input type="text"></label>
+<label>Hit <input type="text"></label>
+
+<h2>Basic Ranged Attack</h2>
+<label>Attack <input type="text"></label>
+<label>Hit <input type="text"></label>
+
+<h1>Character Creation Checklist</h1>
+<ul>
+  <li>Race</li>
+  <li>Class</li>
+  <li>Generate abilities</li>

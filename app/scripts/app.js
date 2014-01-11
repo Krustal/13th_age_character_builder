@@ -13,6 +13,10 @@ angular.module('13thAgeCharacterBuilderApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/character', {
+        templateUrl: 'views/character.html',
+        controller: 'CharacterCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
