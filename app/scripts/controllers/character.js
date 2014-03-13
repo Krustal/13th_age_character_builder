@@ -27,29 +27,29 @@ angular.module('13thAgeCharacterBuilderApp')
       { name: 'Wizard'    }
     ];
 
+    function getMod(){
+      /*jshint validthis:true */
+      return parseInt(Math.floor((this.value - 10) / 2), 10);
+    }
+
+    function getModLvl(){
+      /*jshint validthis:true */
+      return this.mod() + $scope.character.level;
+    }
+
     $scope.character = {
       name: '',
       race: '',
       class: '',
       level: 1,
       attributes: [
-        { name: 'str', value: 10 },
-        { name: 'dex', value: 10 },
-        { name: 'con', value: 10 },
-        { name: 'int', value: 10 },
-        { name: 'wis', value: 10 },
-        { name: 'cha', value: 10 }
+        { name: 'str', value: 10, mod: getMod, modPlusLvl: getModLvl },
+        { name: 'dex', value: 10, mod: getMod, modPlusLvl: getModLvl },
+        { name: 'con', value: 10, mod: getMod, modPlusLvl: getModLvl },
+        { name: 'int', value: 10, mod: getMod, modPlusLvl: getModLvl },
+        { name: 'wis', value: 10, mod: getMod, modPlusLvl: getModLvl },
+        { name: 'cha', value: 10, mod: getMod, modPlusLvl: getModLvl }
       ]
-    };
-
-    // Determine the attribute modifier
-    $scope.attrMod = function(attr) {
-      return parseInt(Math.floor((attr - 10) / 2), 10);
-    };
-
-    // Determine the attribute modifier + level
-    $scope.attrModLvl = function(attr) {
-      return $scope.attrMod(attr) + $scope.character.level;
     };
   });
 
