@@ -1,15 +1,27 @@
 <h1>13th Age Character Builder</h1>
 <label>Name <input type="text" ng-model="name"></label>
-<label>Race <input type="text"></label>
-<label>Class <input type="text"></label>
+<label>
+  Race
+  <select>
+    <option ng-repeat="race in races">{{race.name}}</option>
+  </select>
+</label>
+
+<label>
+  Class
+  <select>
+    <option ng-repeat="class in classes">{{class.name}}</option>
+  </select>
+</label>
 <label>Level <input type="text" ng-model="level"></label>
 
 <h2>Attributes</h2>
-<div ng-repeat="attr in attributeOrder">
-  <label>{{attr}} <input type="text" ng-model="attributes[attr].value"></label>
-  <label>{{attr}} mod <input type="text" ng-model="attributes[attr].mod"></label>
-  <label>{{attr}} mod + level <input type="text" ng-model="attributes[attr].modLvl"></label>
+<div ng-repeat="attr in character.attributes">
+  <label>{{attr.name}} <input type="text" ng-model="attr.value"></label>
+  <label>{{attr.name}} mod <input type="text" disabled value="{{attrMod(attr.value)}}"></label>
+  <label>{{attr.name}} mod + level <input type="text" disabled value="{{attrModLvl(attr.value)}}"></label>
 </div>
+
 
 <h2>Defenses</h2>
 <label>Armor Class (AC) <input type="text"></label>
