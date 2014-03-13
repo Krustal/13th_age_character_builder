@@ -3,10 +3,15 @@
 
 <label>
   Race
-  <select>
-    <option ng-repeat="race in races">{{race.name}}</option>
+  <select ng-model="character.race" ng-options="race.name for race in races">
   </select>
 </label>
+<label>
+  Racial Ability Score Adjustment (+2 to which ability?)
+  <select ng-model="character.racialAbilityBonus" ng-options="bonus for bonus in character.race.bonuses">
+  </select>
+</label>
+{{character.racialAbilityBonus}}
 
 <label>
   Class
@@ -46,9 +51,3 @@
 <h2>Basic Ranged Attack</h2>
 <label>Attack <input type="text"></label>
 <label>Hit <input type="text"></label>
-
-<h1>Character Creation Checklist</h1>
-<ul>
-  <li>Race</li>
-  <li>Class</li>
-  <li>Generate abilities</li>

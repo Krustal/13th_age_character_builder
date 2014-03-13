@@ -3,16 +3,18 @@
 angular.module('13thAgeCharacterBuilderApp')
   .controller('CharacterCtrl', function ($scope) {
 
+    $scope.attributes = ['str', 'con', 'dex', 'int', 'wis', 'cha'];
+
     $scope.races = [
-      { name: 'Human'     },
-      { name: 'Dwarf'     },
-      { name: 'Dark Elf'  },
-      { name: 'High Elf'  },
-      { name: 'Wood Elf'  },
-      { name: 'Gnome'     },
-      { name: 'Half-elf'  },
-      { name: 'Halfling'  },
-      { name: 'Half-orc'  }
+      { name: 'Human',    bonuses: $scope.attributes },
+      { name: 'Dwarf',    bonuses: ['con', 'wis'] },
+      { name: 'Dark Elf', bonuses: ['dex', 'cha'] },
+      { name: 'High Elf', bonuses: ['int', 'cha'] },
+      { name: 'Wood Elf', bonuses: ['dex', 'wis'] },
+      { name: 'Gnome',    bonuses: ['dex', 'int'] },
+      { name: 'Half-elf', bonuses: ['con', 'cha'] },
+      { name: 'Halfling', bonuses: ['con', 'dex'] },
+      { name: 'Half-orc', bonuses: ['str', 'dex'] }
     ];
 
     $scope.classes = [
@@ -29,7 +31,11 @@ angular.module('13thAgeCharacterBuilderApp')
 
     function getMod(){
       /*jshint validthis:true */
-      return parseInt(Math.floor((this.value - 10) / 2), 10);
+      var mod = parseInt(Math.floor((this.value - 10) / 2), 10);
+      if(this.name === $scope.character.racialAbilityBonus){
+        mod += 2;
+      }
+      return mod;
     }
 
     function getModLvl(){
@@ -39,7 +45,8 @@ angular.module('13thAgeCharacterBuilderApp')
 
     $scope.character = {
       name: '',
-      race: '',
+      race: $scope.races[0],
+      racialAbilityBonus: '',
       class: '',
       level: 1,
       attributes: [
