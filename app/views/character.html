@@ -11,16 +11,21 @@
   <select ng-model="character.racialAbilityBonus" ng-options="bonus for bonus in character.race.bonuses">
   </select>
 </label>
-{{character.racialAbilityBonus}}
+
+<br>
 
 <label>
   Class
-  <select>
-    <option ng-repeat="class in classes">{{class.name}}</option>
+  <select ng-model="character.class" ng-options="class.name for class in classes">
+  </select>
+</label>
+<label>
+  Class Ability Score Bonus (+2 to which ability?)
+  <select ng-model="character.classAbilityBonus" ng-options="bonus for bonus in character.class.bonuses">
   </select>
 </label>
 
-<label>Level <input type="text" ng-model="level"></label>
+<label>Level <input type="text" ng-model="character.level"></label>
 
 <h2>Attributes</h2>
 <div ng-repeat="attr in character.attributes">
