@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Human",
+    "bonuses": ["str", "con", "dex", "int", "wis", "cha"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "High Elf",
+    "bonuses": ["int", "cha"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Dwarf",
+    "bonuses": ["con", "wis"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Dark Elf",
+    "bonuses": ["dex", "cha"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Wood Elf",
+    "bonuses": ["dex", "wis"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Gnome",
+    "bonuses": ["dex", "int"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Half-elf",
+    "bonuses": ["con", "cha"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Halfling",
+    "bonuses": ["con", "dex"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  },
+  {
+    "name": "Half-orc",
+    "bonuses": ["str", "dex"],
+    "powers": {},
+    "feats": {},
+    "abilities": {}
+  }
+]

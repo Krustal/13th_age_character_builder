@@ -1,0 +1,7 @@
+{
+  "name": "Human",
+  "bonuses": ["str", "con", "dex", "int", "wis", "cha"],
+  "powers": {},
+  "feats": {},
+  "abilities": {}
+}

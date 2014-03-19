@@ -1,75 +1,10 @@
 'use strict';
 
 angular.module('13thAgeCharacterBuilderApp')
-  .controller('CharacterCtrl', function ($scope) {
-
+  .controller('CharacterCtrl', function ($scope, Race) {
     $scope.attributes = ['str', 'con', 'dex', 'int', 'wis', 'cha'];
 
-    $scope.races = [
-      {
-        name: 'Human',
-        bonuses: $scope.attributes,
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Dwarf',
-        bonuses: ['con', 'wis'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Dark Elf',
-        bonuses: ['dex', 'cha'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'High Elf',
-        bonuses: ['int', 'cha'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Wood Elf',
-        bonuses: ['dex', 'wis'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Gnome',
-        bonuses: ['dex', 'int'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Half-elf',
-        bonuses: ['con', 'cha'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Halfling',
-        bonuses: ['con', 'dex'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      },
-      {
-        name: 'Half-orc',
-        bonuses: ['str', 'dex'],
-        powers: {},
-        feats: {},
-        abilities: {}
-      }
-    ];
+    $scope.races = Race.query();
 
     $scope.classes = [
       { name: 'Barbarian', bonuses: ['str', 'con'], talents: {}, spells: {}, powers: {}, feats: {} },

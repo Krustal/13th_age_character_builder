@@ -5,11 +5,12 @@ angular.module('13thAgeCharacterBuilderApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'thirteenthAgeServices'
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
@@ -17,7 +18,11 @@ angular.module('13thAgeCharacterBuilderApp', [
         templateUrl: 'views/character.html',
         controller: 'CharacterCtrl'
       })
+      .when('/races/:raceId', {
+        templateUrl: 'views/race-detail.html',
+        controller: 'RaceDetailCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/character'
       });
   });
