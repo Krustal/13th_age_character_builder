@@ -1,22 +1,12 @@
 'use strict';
 
 angular.module('13thAgeCharacterBuilderApp')
-  .controller('CharacterCtrl', function ($scope, Race) {
+  .controller('CharacterCtrl', function ($scope, Race, Classes) {
     $scope.attributes = ['str', 'con', 'dex', 'int', 'wis', 'cha'];
 
     $scope.races = Race.query();
 
-    $scope.classes = [
-      { name: 'Barbarian', bonuses: ['str', 'con'], talents: {}, spells: {}, powers: {}, feats: {} },
-      { name: 'Bard', bonuses: ['dex', 'cha'], talents: {}, spells: {}, powers: {}, feats: {}      },
-      { name: 'Cleric', bonuses: ['str', 'wis'], talents: {}, spells: {}, powers: {}, feats: {}    },
-      { name: 'Fighter', bonuses: ['str', 'con'], talents: {}, spells: {}, powers: {}, feats: {}   },
-      { name: 'Paladin', bonuses: ['str', 'cha'], talents: {}, spells: {}, powers: {}, feats: {}   },
-      { name: 'Ranger', bonuses: ['str', 'dex', 'wis'], talents: {}, spells: {}, powers: {}, feats: {}    },
-      { name: 'Rogue', bonuses: ['dex', 'cha'], talents: {}, spells: {}, powers: {}, feats: {}     },
-      { name: 'Sorcerer', bonuses: ['cha', 'con'], talents: {}, spells: {}, powers: {}, feats: {}  },
-      { name: 'Wizard', bonuses: ['int', 'wis'], talents: {}, spells: {}, powers: {}, feats: {}    }
-    ];
+    $scope.classes = Classes.query();
 
     function getMod(){
       /*jshint validthis:true */
@@ -34,9 +24,9 @@ angular.module('13thAgeCharacterBuilderApp')
 
     $scope.character = {
       name: '',
-      race: $scope.races[0],
+      race: $scope.races.human,
       racialAbilityBonus: null,
-      class: $scope.classes[0],
+      class: $scope.classes.fighter,
       classAbilityBonus: null,
       level: 1,
       attributes: [

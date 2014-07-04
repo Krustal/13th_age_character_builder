@@ -3,7 +3,7 @@
 
 <label>
   Race
-  <select ng-model="character.race" ng-options="race.name for race in races">
+  <select ng-model="character.race" ng-options="race for (race, raceProps) in races">
   </select>
 </label>
 <label>
@@ -16,7 +16,7 @@
 
 <label>
   Class
-  <select ng-model="character.class" ng-options="class.name for class in classes">
+  <select ng-model="character.class" ng-options="class for (class, classProps) in classes">
   </select>
 </label>
 <label>

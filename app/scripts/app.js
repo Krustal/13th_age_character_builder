@@ -22,6 +22,10 @@ angular.module('13thAgeCharacterBuilderApp', [
         templateUrl: 'views/race-detail.html',
         controller: 'RaceDetailCtrl'
       })
+      .when('/classes/:classId', {
+        templateUrl: 'views/class-detail.html',
+        controller: 'ClassDetailCtrl'
+      })
       .otherwise({
         redirectTo: '/character'
       });
