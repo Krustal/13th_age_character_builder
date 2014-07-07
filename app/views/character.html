@@ -25,13 +25,20 @@
   </select>
 </label>
 
-<label>Level <input type="text" ng-model="character.level"></label>
+<label>Level <input type="number" max="10" min="1" ng-model="character.level"></label>
 
 <h2>Attributes</h2>
-<div ng-repeat="attr in character.attributes">
-  <label>{{attr.name}} <input type="text" ng-model="attr.value"></label>
-  <label>{{attr.name}} mod <input type="text" disabled value="{{attr.mod()}}"></label>
-  <label>{{attr.name}} mod + level <input type="text" disabled value="{{attr.modPlusLvl()}}"></label>
+<strong>Ability Points</strong> {{character.abilityPoints()}}
+<div id="character-attributes" ng-repeat="(name, attr) in character.attributes">
+  <label>
+    {{name}}
+    <input type="number" max="18" ng-model="attr.baseValue">
+    <input type="number" max="30" value="{{attr.value()}}" disabled>
+    <button type="button" ng-click="decrementAttr(attr)" ng-disabled="attr.value() <= 0">-</button>
+    <button type="button" ng-click="incrementAttr(attr)" ng-disabled="attr.baseValue >= 18 || attr.value() >= 20">+</button>
+  </label>
+  <label>{{attr.name}} mod <input type="number" max="30" disabled value="{{attr.mod()}}"></label>
+  <label>{{attr.name}} mod + level <input type="number" max="30" disabled value="{{attr.modPlusLvl()}}"></label>
 </div>
 
 
