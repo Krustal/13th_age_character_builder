@@ -1,65 +1,156 @@
-<h1>13th Age Character Builder</h1>
-<label>Name <input type="text" ng-model="name"></label>
+<form>
+  <h1>13th Age Character Builder</h1>
+  <label>Name <input type="text" ng-model="character.name"></label>
 
-<label>
-  Race
-  <select ng-model="character.race" ng-options="race for (race, raceProps) in races">
-  </select>
-</label>
-<label>
-  Racial Ability Score Adjustment (+2 to which ability?)
-  <select ng-model="character.racialAbilityBonus" ng-options="bonus for bonus in character.race.bonuses">
-  </select>
-</label>
+  <label>Level <input type="number" max="10" min="1" ng-model="character.level"></label>
 
-<br>
-
-<label>
-  Class
-  <select ng-model="character.class" ng-options="class for (class, classProps) in classes">
-  </select>
-</label>
-<label>
-  Class Ability Score Bonus (+2 to which ability?)
-  <select ng-model="character.classAbilityBonus" ng-options="bonus for bonus in character.class.bonuses">
-  </select>
-</label>
-
-<label>Level <input type="number" max="10" min="1" ng-model="character.level"></label>
-
-<h2>Attributes</h2>
-<strong>Ability Points</strong> {{character.abilityPoints()}}
-<div id="character-attributes" ng-repeat="(name, attr) in character.attributes">
-  <label>
-    {{name}}
-    <input type="number" max="18" ng-model="attr.baseValue">
-    <input type="number" max="30" value="{{attr.value()}}" disabled>
-    <button type="button" ng-click="decrementAttr(attr)" ng-disabled="attr.value() <= 0">-</button>
-    <button type="button" ng-click="incrementAttr(attr)" ng-disabled="attr.baseValue >= 18 || attr.value() >= 20">+</button>
-  </label>
-  <label>{{attr.name}} mod <input type="number" max="30" disabled value="{{attr.mod()}}"></label>
-  <label>{{attr.name}} mod + level <input type="number" max="30" disabled value="{{attr.modPlusLvl()}}"></label>
-</div>
+  <fieldset>
+    <legend>Race</legend>
+    <select id="char-race" ng-model="character.race" ng-options="race for (race, raceProps) in races">
+    </select>
+    <label for="char-race" class="rule">
+      Every character has a race. Each race provides a +2 bonus to
+      one of your ability scores.
+    </label>
 
 
-<h2>Defenses</h2>
-<label>Armor Class (AC) <input type="text"></label>
-<label>Physical Defense (PD) <input type="text"></label>
-<label>Mental Defense (MD) <input type="text"></label>
-<label>Save Bonuses <input type="text"></label>
+    <label>
+      Racial Ability Score Adjustment (+2 to which ability?)
+      <select ng-model="character.racialAbilityBonus" ng-options="bonus for bonus in character.race.bonuses">
+      </select>
+    </label>
+  </fieldset>
 
-<h2>Hit Points</h2>
-<label>Current <input type="text"></label>
-<label>Maximum <input type="text"></label>
+  <fieldset>
+    <legend>Class</legend>
+    <select id="char-class" ng-model="character.class" ng-options="class for (class, classProps) in classes">
+    </select>
+    <label for="char-class" class="rule">
+      Every character has a class. Each class provides a +2 bonus to one ability
+      score (different than racial bonus).
+    </label>
 
-<h2>Recoveries</h2>
-<label>Current <input type="text"></label>
-<label>Maximum <input type="text"></label>
+    <label>
+      Class Ability Score Bonus (+2 to which ability?)
+      <select ng-model="character.classAbilityBonus" ng-options="bonus for bonus in character.class.bonuses">
+      </select>
+    </label>
+  </fieldset>
 
-<h2>Basic Melee Attack</h2>
-<label>Attack <input type="text"></label>
-<label>Hit <input type="text"></label>
 
-<h2>Basic Ranged Attack</h2>
-<label>Attack <input type="text"></label>
-<label>Hit <input type="text"></label>
+  <fieldset>
+    <legend>Attributes</legend>
+    <strong>Ability Points</strong> {{character.abilityPoints()}}
+    <div id="character-attributes" ng-repeat="(name, attr) in character.attributes">
+      <label>
+        {{name}}
+        <input type="number" max="18" ng-model="attr.baseValue">
+        <input type="number" max="30" value="{{attr.value()}}" disabled>
+        <button type="button" ng-click="decrementAttr(attr)" ng-disabled="attr.value() <= 0">-</button>
+        <button type="button" ng-click="incrementAttr(attr)" ng-disabled="attr.baseValue >= 18 || attr.value() >= 20">+</button>
+      </label>
+      <label>{{attr.name}} mod <input type="number" max="30" disabled value="{{attr.mod()}}"></label>
+      <label>{{attr.name}} mod + level <input type="number" max="30" disabled value="{{attr.modPlusLvl()}}"></label>
+    </div>
+    <div class="rule">
+      <p>
+        Your character can be assigned ability scores in various ways. here are two
+        ways.
+      </p>
+
+      <strong>Roll 'em</strong>
+      <p>
+        Roll 4d6 for each of the six ability scores (Strength, Constitution, Dexterity, Intelligence, Wisdom, and Charisma). Drop the low die in each roll. Put the scores into any order to best fit the character you want to play.
+      </p>
+
+      <strong>Point Buy</strong>
+      <p>You get 28 points to buy your abilities using the chart below.</p>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Gear</legend>
+    <h3>Armor</h3>
+    <select ng-model="character.gear.armor" ng-options="armor for armor in gear.armor"></select>
+    <label><input type="checkbox" ng-model="character.gear.shield"> Shield</label>
+    <div class="rule" ng-if="character.class">
+      <table>
+        <thead>
+          <tr>
+            <th>Armor Type</th>
+            <th>Base AC</th>
+            <th>Atk Penalty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(armor, properties) in character.class.gear.armor">
+            <th>{{armor}}</th>
+            <td>{{properties.AC}}</td>
+            <td>{{properties.attackPenalty}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </fieldset>
+
+  <h2>Initiative</h2>
+  <input type="number" value="{{character.initiative()}}" disabled>
+  <p class="rule">Dex mod + Level</p>
+
+
+  <h2>Defenses</h2>
+  <label>Armor Class (AC) <input type="text" value="{{character.AC()}}" disabled></label>
+  <div class="rule" ng-if="character.class">
+    <p>
+      {{character.class.gear.armor[character.gear.armor].AC}} + middle of
+      {{character.class.ACAttributes.join('/')}} + ({{character.class.gear.armor.shield.AC}} if using shield) + level</p>
+  </div>
+
+  <label>Physical Defense (PD) <input type="text" value="{{character.PD()}}" disabled></label>
+  <p class="rule" ng-if="character.class">{{character.class.physicalDefense.base}} + middle of {{character.class.physicalDefense.attributes.join('/')}} + level</p>
+
+  <label>Mental Defense (MD) <input type="text" value="{{character.MD()}}" disabled></label>
+  <p class="rule" ng-if="character.class">
+    {{character.class.mentalDefense.base}} + middle of
+    {{character.class.mentalDefense.attributes.join('/')}} + level
+  </p>
+
+
+  <label>Save Bonuses <input type="text"></label>
+
+  <h2>Hit Points</h2>
+  <label>Current <input type="text"></label>
+  <label>Maximum <input type="text"></label>
+
+  <h2>Recoveries</h2>
+  <label>Current <input type="text"></label>
+  <label>Maximum <input type="text"></label>
+
+  <h2>Basic Melee Attack</h2>
+  <label>Attack <input type="text"></label>
+  <label>Hit <input type="text"></label>
+
+  <h2>Basic Ranged Attack</h2>
+  <label>Attack <input type="text"></label>
+  <label>Hit <input type="text"></label>
+
+  <fieldset>
+    <legend>One Unique Thing</legend>
+    <textarea ng-model="character.uniqueThing"></textarea>
+    <div class='rule'>
+      <p>
+        Your character’s One Unique Thing (their unique) is a special feature
+        invented by you, the player, which sets your character apart from every
+        other hero. It is a unique and special trait to your player, and markedly
+        unusual. The intent is that it provides a special flavor to the campaign
+        and can assist the GM in determining how your character can interact with
+        characters and story in the campaign.
+      </p>
+      <p>
+        Your character’s unique should not provide general practical value in
+        combat. That is not the intent. The intent is to open up story arcs and
+        fun roleplaying opportunities.
+      </p>
+    </div>
+  </fieldset>
+</form>

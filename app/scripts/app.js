@@ -16,7 +16,15 @@ angular.module('13thAgeCharacterBuilderApp', [
       })
       .when('/character', {
         templateUrl: 'views/character.html',
-        controller: 'CharacterCtrl'
+        controller: 'CharacterCtrl',
+        resolve: {
+          races: function(Race) {
+            return Race.query();
+          },
+          classes: function(Classes) {
+            return Classes.query();
+          }
+        }
       })
       .when('/races/:raceId', {
         templateUrl: 'views/race-detail.html',

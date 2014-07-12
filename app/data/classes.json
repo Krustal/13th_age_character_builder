@@ -1,0 +1,462 @@
+{
+  "bard": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "dex",
+      "cha"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 1,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 12
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 13
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 10,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 11,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "rogue": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "dex",
+      "cha"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 2,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 11
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 12
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 13
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 12,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 10,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "cleric": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "str",
+      "wis"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 0,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 12
+        },
+        "heavy": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 14
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 11,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 11,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "wizard": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "int",
+      "wis"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 2,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 11
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 10,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 11,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "paladin": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "str",
+      "cha"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 0,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 12
+        },
+        "heavy": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 16
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 10,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 12,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "barbarian": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "str",
+      "con"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 0,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 12
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 13
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 11,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 10,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "sorcerer": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "cha",
+      "con"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 2,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 11
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 11,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 10,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "ranger": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "str",
+      "dex",
+      "wis"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 2,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 14
+        },
+        "heavy": {
+          "attackPenalty": 2,
+          "base": true,
+          "AC": 15
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 11,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 10,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  },
+  "fighter": {
+    "ACAttributes": [
+      "con",
+      "dex",
+      "wis"
+    ],
+    "bonuses": [
+      "str",
+      "con"
+    ],
+    "gear": {
+      "armor": {
+        "shield": {
+          "attackPenalty": 0,
+          "base": false,
+          "AC": 1
+        },
+        "none": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 10
+        },
+        "light": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 13
+        },
+        "heavy": {
+          "attackPenalty": 0,
+          "base": true,
+          "AC": 15
+        }
+      }
+    },
+    "physicalDefense": {
+      "base": 10,
+      "attributes": [
+        "str",
+        "con",
+        "dex"
+      ]
+    },
+    "mentalDefense": {
+      "base": 10,
+      "attributes": [
+        "int",
+        "wis",
+        "cha"
+      ]
+    }
+  }
+}
