@@ -1,0 +1,68 @@
+# A PC is represented as:
+
+* name - Open string representing the character name
+level - a numeric value rangin from 1-10, representing the characters progress
+
+* ability scores - This list of six attributes is represented by a positive
+    number. Many other aspects of the character increase, decrease, or otherwise
+    modify these numbers. They are also used to compute numerous secondary values.
+    These abilities include:
+  * strength
+  * dexterity
+  * wisdom
+  * intelligence
+  * charisma
+  * constitution
+
+* race - Chosen from an enumerated list of options. Each race provides a +2 bonus
+  to one of the ability scores.
+
+* class - Chosen from an enumerated list of options. Each class provides a +2
+  bonus to one of the abilitys cores.
+
+* One Unique Thing - An open text string that explains what makes this character
+  unique within the fiction of the game world.
+
+* Icon Relationships - Represents the relationship a character has with the
+  icons of the game fiction. A relationship can be either positive, conflicted,
+  or negative. This is represented by a map with each icon as the key as the
+  associated type and value of the relationship following.
+
+  ```JavaScript
+  {
+    'emporer': [1, 'positive'],
+    'lich king': [1, 'negative'],
+    'arch mage': [1, 'conflicted']
+  }
+  ```
+
+## Seconary Stats
+Secondary stats are values that are computed from the primary stats.
+
+* Ability Modifiers - For each ability score there is an associated ability mod.
+  This is computed by subtracting 10 from the score and dividing by 2.
+
+* Combat stats - stats used primarily for combat
+  * HP - the health of the character, represented as a number. > 0 indicates the
+    character is alive. < 0 means they are either unconscious or dead. Death is
+    determined by them having a negative HP with an absolute value greater than
+    half their max HP.
+  * Max HP - The highest natural value the characters health can climb to
+    without modifiers.
+  * AC (Armor Class) - A number represented the character defense using armor.
+    Computed as the base class AC + AC modifier + level
+  * AC Modifier - A number derived from the middle of con/dex/wis modifiers
+  * PD (Physical Defense) - A number representing the character defense using
+    their raw physical resistentce (e.g. poison, etc.). It is computed as the
+    classes base PD + PD modifier + level.
+  * PD Modifier - A number derived from the middle of str/con/dex
+  * MD (Mental Defense) - A number representing the character defense using
+    their mental ability (e.g. physicic attacks, etc.). It is computed as the
+    classes base MD + MD modifier + level.
+  * MD Modifier - A number derived from the middle of int/wis/cha + level.
+  * Initiative - A number that modifies the initiative roll at the beginnig of
+    combat. Computed as dex modifier + level.
+  * Recoveries - A number that represents the number of times a character can
+    rally or self-heal. It is determiend by the class.
+  * Recovery Dice - The dice the player rolls to determine how much they heal.
+    It is determined by the class.

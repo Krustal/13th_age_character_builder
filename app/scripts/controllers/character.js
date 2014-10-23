@@ -1,7 +1,91 @@
 'use strict';
 
 angular.module('13thAgeCharacterBuilderApp')
-  .controller('CharacterCtrl', function ($scope, races, classes) {
+  .service('characterService', function(){
+
+    this.abilities = {
+      strength:     8,
+      dexterity:    8,
+      wisdom:       8,
+      intelligence: 8,
+      charisma:     8,
+      constitution: 8
+    };
+
+    this.race =           undefined;
+    this.charClass =      undefined;
+    this.oneUniqueThing = undefined;
+    this.iconRelationships = {}; // how many points to distribute is provided by another service.
+    this.backgrounds = {}; // how many per level is provided by another service
+    this.feats = [];
+
+    this.modifiers = {
+      adders: [],
+      multipliers: []
+    };
+
+    /**
+     * Sets the character service ability scores either individually by passing
+     * a string for the ability and a number for the score or passing an object
+     * that sets multiple ability scores.
+     *
+     * characterService.setAbility({ strength: 10, dexterity: 10 });
+     * characterService.setAbility('strength', 10);
+     */
+    this.setAbility = this.setAbilities = function(ability, score) {
+      switch(typeof ability){
+        case 'object':
+          this.abilities = ability;
+          break;
+        case 'string':
+          this.abilities[ability] = score;
+          break;
+      }
+    };
+
+    this.registerModifier = function(name, properties, type, modifier) {
+      for(var property in properties) {
+        this.modifiers[property] = this.modifiers[property] || {};
+        this.modifiers[property][type] = this.modifiers[property][type] || {};
+        this.modifiers[property][type][name] = modifier;
+      }
+    };
+
+    // Example concept of implementation
+    // character.registerModifier(['attack'], 'adder', function(){
+    //   return score + 2;
+    // });
+
+    this.getAbility = function(ability) {
+      var score = this[ability];
+      if(this.modifiers[ability]){
+        if(this.modifiers[ability].multipliers) {
+          score = _.reduce(this.modifiers[ability].multipliers, function(scoreMemo, modifier){
+            return modifier.call(this, scoreMemo);
+          }, score);
+        }
+        if(this.modifiers[ability].adders) {
+          score = _.reduce(this.modifiers[ability].adders, function(scoreMemo, modifier){
+            return modifier.call(this, scoreMemo);
+          }, score);
+        }
+      }
+      return score;
+    };
+  })
+  .controller('CharacterCtrl', function ($scope, races, classes, characterService) {
+    (function(){
+      characterService.setAbility({
+        strength: 10,
+        dexterity: 10,
+        wisdom: 10,
+        charisma: 10,
+        constitution: 10,
+        intelligence: 10
+      });
+      console.log(characterService);
+      console.log(characterService.abilities.strength);
+    })();
 
     function abilityCost(abilityScore) {
       var cost = 0;
